@@ -3,5 +3,48 @@
   <head><title>Practice Git</title></head>
   <body>
     <h1>Hello, Ty Landry</h1>
+    <h2>LinkedList Demo</h2>
+    <p>
+      An ArrayList's <code>add</code> and <code>remove</code> methods each
+      shift elements, costing O(n) per call. Performing n such operations
+      therefore costs O(n&sup2;) overall.
+    </p>
+    <p>
+      The <strong>LinkedList</strong> below uses a doubly-linked structure so
+      that <code>add</code> and <code>remove</code> at either end run in
+      <strong>O(1)</strong> time, eliminating the O(n&sup2;) cost.
+    </p>
+    <pre id="output"></pre>
+    <script src="LinkedList.js"></script>
+    <script>
+      const list = new LinkedList();
+
+      // add() appends to the tail in O(1)
+      list.add(1);
+      list.add(2);
+      list.add(3);
+
+      // addFirst() prepends to the head in O(1)
+      list.addFirst(0);
+
+      const lines = [];
+      lines.push("After add(1), add(2), add(3), addFirst(0):");
+      lines.push("  list = " + JSON.stringify(list.toArray()));
+      lines.push("  size = " + list.getSize());
+
+      // remove() removes from the tail in O(1)
+      const removed = list.remove();
+      lines.push("\nAfter remove():");
+      lines.push("  removed = " + removed);
+      lines.push("  list = " + JSON.stringify(list.toArray()));
+
+      // removeFirst() removes from the head in O(1)
+      const removedFirst = list.removeFirst();
+      lines.push("\nAfter removeFirst():");
+      lines.push("  removed = " + removedFirst);
+      lines.push("  list = " + JSON.stringify(list.toArray()));
+
+      document.getElementById("output").textContent = lines.join("\n");
+    </script>
   </body>
 </html>
